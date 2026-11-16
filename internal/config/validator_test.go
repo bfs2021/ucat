@@ -111,6 +111,16 @@ func TestValidateLocal_tableNameRequired(t *testing.T) {
 	assert.True(t, diags.HasError())
 }
 
+// An empty table file only yields Check 5; the schema/columns checks that
+// would cascade off the missing name are skipped for that table.
+func TestValidateLocal_emptyNameNoCascade(t *testing.T) {
+	tbl := resolvedTable("")
+	tbl.Name = ""
+	diags := config.ValidateLocal(resolvedConfig([]config.Table{tbl}))
+	assert.Len(t, diags, 1)
+	assert.Contains(t, diags[0].Summary, "table name is required")
+}
+
 func TestValidateLocal_columnNameRequired(t *testing.T) {
 	tbl := resolvedTable("orders")
 	tbl.Columns = []config.Column{{Name: "", Type: typSTRING}}

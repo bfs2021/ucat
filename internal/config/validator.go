@@ -646,6 +646,12 @@ func (v *validation) checkTable(table Table) {
 	loc := tableLoc(table)
 
 	v.checkTableNames(table, loc)
+
+	// With no name the later checks only report cascaded errors (schema ref,
+	// columns, clustering...), so Check 5 is all this table gets.
+	if table.Name == "" {
+		return
+	}
 	v.checkSchemaRef(table, loc)
 	v.checkTableDuplicates(table, loc)
 	v.checkTableRenameTargets(table, loc)

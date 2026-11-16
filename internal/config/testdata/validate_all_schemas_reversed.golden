@@ -76,7 +76,6 @@ error|table "zk4", column "a": type "BAD" is not supported; supported types: BIG
 error|table name is required|tables/nowhere/zk5.yml
 error|rename_from set but table name is empty|tables/nowhere/zk5.yml
 error|table "": rename_from "OldX" must be lowercase: Unity Catalog stores table names in lowercase|tables/nowhere/zk5.yml
-error|unknown schema ref "nowhere": not defined in any catalog config|tables/nowhere/zk5.yml
 warning|table rename_from "Same" is same as name; no rename will occur|tables/nowhere/zk6.yml
 error|table name "Same" must be lowercase: Unity Catalog stores table names in lowercase|tables/nowhere/zk6.yml
 error|table "Same": rename_from "Same" must be lowercase: Unity Catalog stores table names in lowercase|tables/nowhere/zk6.yml

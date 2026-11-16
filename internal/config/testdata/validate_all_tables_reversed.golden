@@ -39,7 +39,6 @@ error|unknown schema ref "nowhere": not defined in any catalog config|tables/now
 error|table name is required|tables/nowhere/zk5.yml
 error|rename_from set but table name is empty|tables/nowhere/zk5.yml
 error|table "": rename_from "OldX" must be lowercase: Unity Catalog stores table names in lowercase|tables/nowhere/zk5.yml
-error|unknown schema ref "nowhere": not defined in any catalog config|tables/nowhere/zk5.yml
 error|table "zk4": clustering.auto and clustering.columns are mutually exclusive|tables/silver/zk4.yml
 error|table "zk4": drop: true cannot be combined with rename_from (remove rename_from)|tables/silver/zk4.yml
 error|table "zk4", column "a": type "BAD" is not supported; supported types: BIGINT, BINARY, BOOLEAN, DATE, DOUBLE, FLOAT, INT, SMALLINT, STRING, TIMESTAMP, TIMESTAMP_NTZ, TINYINT, VARIANT, ARRAY<...>, DECIMAL[(p,s)], GEOGRAPHY(...), GEOMETRY(...), INTERVAL ..., MAP<...>, STRUCT<...>|tables/silver/zk4.yml
