@@ -669,9 +669,10 @@ func (v *validation) checkTable(table Table) {
 	}
 
 	// Columns are required: an empty list would drop every column of an existing
-	// table. For a nameless table this is a cascade of Check 5 (an empty file has
-	// no columns), so it is suppressed there.
-	if !table.Drop && len(table.Columns) == 0 && table.Name != "" {
+	// table. For a nameless table with an empty schema this is a cascade of Check 5
+	// (an empty file has neither), so it is suppressed only in that case; a
+	// nameless table that still names a real schema must report this error.
+	if !table.Drop && len(table.Columns) == 0 && (table.Name != "" || table.Schema != "") {
 		v.errorf(loc, "table %q: columns is required", table.Name)
 	}
 
